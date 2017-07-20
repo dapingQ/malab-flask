@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js">
+{% include 'head.html' %}
+<body>
+  <div class="top-nav">
+    <div class="center-align fn-clear am-cf">
+      <a href="" class="logo">
+        <img src="{{url_for('static', filename='image/labicon.png')}}" height="50" width="130">
+      </a>
+
+      <ul class="cat right">
+        <li class="left">
+          <a class="selected"  href="">home</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <nav data-am-widget="menu" class="am-menu  am-menu-dropdown1" data-am-menu-collapse> 
+  <a href="" class="logo">
+        <img src="{{url_for('static', filename='image/labicon.png')}}" height="50" width="130">
+      </a>
+  <a href="javascript: void(0)" class="am-menu-toggle">
+    <i class="am-menu-toggle-icon am-icon-list"></i>
+  </a>
+  <ul class="am-menu-nav am-avg-sm-1 am-collapse">
+    <li class="">
+      <a class="selected"  href="">home</a>
+    </li>
+  </ul>
+</nav>
+
+<section class="content">
+
+  {% block content %}
+    
+  {% endblock %}
+
+</section>
+
+<div data-am-widget="gotop" class="am-gotop am-gotop-fixed" >
+  <a href="#top" title="">
+    <i class="am-gotop-icon am-icon-chevron-up"></i>
+  </a>
+</div>
+
+<footer>
+  <div class="am-g ">
+    <div class="am-u-md-2 am-u-sm-8 am-u-md-offset-3 text-right" style="margin-bottom:10px">
+      <img class="am-circle" src="{{url_for('static', filename='image/nju.jpg')}}" height="100" width="100">
+    </div>
+    <div class="am-u-md-7 am-u-sm-12 text-left">
+     <a href="http://www.nju.edu.cn/" target="_blank">Nanjing University</a> |
+     <a href="http://physics.nju.edu.cn/" target="_blank">School of Physics</a> |
+     <a href="http://vlssm.nju.edu.cn/" target="_blank">NLSSM</a>
+      <p class="item">
+        <i class="am-icon-map-marker"></i> Nanjing, Jiangsu Province, China
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <a href="http://qoqi.nju.edu.cn/" target="_blank">中文版</a>
+      </p>
+	<p class="item">Copyright © 2015 <a href="http://qoqi.nju.edu.cn/wiki/doku.php" target="_blank"> MaLab </a>. All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
