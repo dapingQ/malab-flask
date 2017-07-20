@@ -59,13 +59,20 @@ def login():
             error = 'Please confirm your password.'
         else:
             session['logined_in'] = True
-            flash('Successfully login!')
-            redirect(url_for('admin'))
+            return redirect(url_for('admin'))
     return render_template('login.html', error = error)
 
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect(url_for('/'))
+
 @app.route('/admin',methods=['GET', 'POST'])
-def admin():
-    return render_template('dashboard.html')
+def dashboard():
+    db = get_db()
+    cur = db.execute('select name, e-mail, school from members order by id desc')
+    entries = cur.fetchall()
+    return render_template('dashboard.html', entries = entries)
 
 if __name__ == '__main__':
     app.run(debug=True)
