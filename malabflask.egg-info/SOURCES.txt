@@ -1,5 +1,8 @@
 malabflask/__init__.py
 malabflask/api.py
+malabflask/configtest.py
+malabflask/database.py
+malabflask/forms.py
 malabflask/routing.py
 malabflask.egg-info/PKG-INFO
 malabflask.egg-info/SOURCES.txt

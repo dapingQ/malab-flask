@@ -1,64 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
-  <meta charset="UTF-8">
-  <title>Login Page | MaLab Website</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="alternate icon" type="image/png" href="{{url_for('static', filename='assets/i/favicon.png')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/amazeui.min.css')}}"/>
-  <style>
-    .header {
-      text-align: center;
-    }
-    .header h1 {
-      font-size: 200%;
-      color: #333;
-      margin-top: 30px;
-    }
-    .header p {
-      font-size: 14px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Login Page | MaLab Website</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="{{url_for('static', filename='assets/i/favicon.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/amazeui.min.css')}}" />
+    <style>
+        .header {
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 200%;
+            color: #333;
+            margin-top: 30px;
+        }
+        
+        .header p {
+            font-size: 14px;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="am-vertical-align" style="height:600px;">
-  <div class="am-g  am-vertical-align-middle" >
-    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-      <h1>登录 / Login</h1>
-      <hr>
-      <!-- div class="am-btn-group">
-        <a href="#" class="am-btn am-btn-secondary am-btn-sm"><i class="am-icon-github am-icon-sm"></i> Github</a>
-        <a href="#" class="am-btn am-btn-success am-btn-sm"><i class="am-icon-google-plus-square am-icon-sm"></i> Google+</a>
-        <a href="#" class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-stack-overflow am-icon-sm"></i> stackOverflow</a>
-      </div -->
-      <br>
-      <br>
-      {% if error %}<p class=error><strong> {{ error }}</strong>{% endif %}
-      <form method="post" class="am-form">
-        <label for="email">用户名</label>
-        <input type="text" name=username >
-        <br>
-        <label for="password">密码</label>
-        <input type="text" name=password>
-        <br>
-        <label for="remember-me">
-          <input id="remember-me" type="checkbox">
-          记住密码
-        </label>
-        <br />
-        <div class="am-cf">
-          <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-          <input type="submit" name="" value="忘记密码" class="am-btn am-btn-default am-btn-sm am-fr">
+    <div class="am-vertical-align" style="height:600px;">
+        <div class="am-g  am-vertical-align-middle">
+            <div class="am-u-lg-4 am-u-md-6 am-u-sm-centered">
+                <h1>Administrator</h1>
+                <hr> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                <h3>{{ message }}</h3>
+                {% endfor %}{% endif %}{% endwith %}
+                <br>
+                <form method="POST" class="am-form" action="/login">
+                    {{ form.csrf_token }}
+                    <label for="email">{{ form.username.label }}</label> {{ form.username() }}
+                    <br>
+                    <label for="password">{{ form.password.label }}</label> {{ form.password() }}
+                    <br>
+                    <div class="am-cf">
+                        {{ form.submit( class="am-btn am-btn-primary am-btn-sm am-fl") }}
+                    </div>
+                </form>
+            </div>
         </div>
-      </form>
-    </div>
-  </div>
 
-</div>
+    </div>
 </body>
+
 </html>
