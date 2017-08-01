@@ -1,3 +1,0 @@
-graft malabflask/templates
-graft malabflask/static
-include malabflask/schema.sql

@@ -1,19 +1,30 @@
 import os
 
-# DATABASE = os.path.join(os.path.curdir, 'malab.db'),
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
+    SECRET_KEY = 'asdfghjkl' 
     DEBUG = False
-    TESTING = False
-    # DATABASE_URI = 'sqlite://:memory:'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///malab.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
-class Admin(Config):
-    ADMIN = 'malabadmin'
-    PASSWORD = 'd208d110'
+    @staticmethod
+    def init_app(app):
+        pass
 
 class DevelopmentConfig(Config):
     DEBUG = True
 
-class TestingConfig(Config):
-    TESTING = True
+# class TestingConfig(Config):
+#     TESTING = True
+
+config = {
+    'development': DevelopmentConfig,
+    # 'testing': TestingConfig,
+    # 'production': ProductionConfig,
+    'default': DevelopmentConfig,
+    'USERNAME': 'admin',
+    'PASSWORD': 'd208d110'
+}
