@@ -7,6 +7,8 @@ setup(
     install_requires=[
         'flask',
         'flask-wtf',
-        'flask-sqlalchemy'
+        'flask-sqlalchemy',
+        'flask-script',
+        'flask-migrate'
     ],
 )
