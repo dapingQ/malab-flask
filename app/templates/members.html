@@ -1,0 +1,117 @@
+{% extends 'layout.html' %}{% block content %}
+<div class="news-body">
+    <!--div class="intro">
+		<h4 class="sub-title">Group members</h4>
+		<div class="group-photo" >
+			<img width="400" height="300" src="/image/group.jpg">
+		</div>
+	</div-->
+    <div class="intro principal">
+        <h4 class="sub-title">Principal Investigator</h4>
+        <div class="detail-item">
+            <!-- if he/she has his/her own page, fill it, please -->
+            <a class="left" href="" target="_blank">
+                <img width="100" height="100" class="am-circle" src="{{url_for('static', filename='image/members/ma.jpg')}}">
+            </a>
+
+            <div class="body">
+                <h2 class="name">
+                    <a href="" target="_blank">Xiaosong Ma</a>
+                </h2>
+                <div class="am-g">
+                    <div class="summary">
+                        <p>Professor of School of Physics at Nanjing University</p>
+                        <p>C604, Tang Zhongying Building, 15 Jinyin St.</p>
+                    </div>
+                    <ul class="am-avg-md-3">
+                        <li>
+                            <h6>Education</h6>
+                            <div class="item">
+                                2005-07 ~ 2010-08<br>
+                                <b> University of Vienna </b> | Ph.D
+                                <br> 2003-09 ~ 2005-10<br>
+                                <b> Leiden University </b>| M.S.
+                                <br> 1999-09 ~ 2003-07<br>
+                                <b>Nanjing University </b>| B.S.
+                            </div>
+                        </li>
+                        <li>
+                            <h6>Experience</h6>
+                            <div class="item">
+                                2012-07 ~ 2015-08<br>
+                                <b>Yale University</b> | Postdoc <br> Integrated quantum photonics
+                                <br> 2010-10 ~ 2012-06<br>
+                                <b>University of Vienna</b> | Postdoc <br> Experimental quantum physics
+                            </div>
+                        </li>
+                        <li>
+                            <h6>Contact Me</h6>
+                            <div class="item">
+                                <i class="am-icon-phone"></i> (86)-025-83592270
+                            </div>
+                            <div class="item">
+                                <i class="am-icon-envelope"></i> xiaosong.ma@nju.edu.cn
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="intro">
+        <h4 class="sub-title">Postdoctoral Fellows</h4>
+        <div class="am-g">
+            {% for member in members_list %}
+            <div class="am-u-md-6 am-u-sm-12">
+                <div class="detail-item">
+                    <a class="left" href="{{member.site}}" target="_blank">
+                        <div style="background-image:url(http://p3.music.126.net/9SO5YpYIug0ujYjoRwJ3nA==/18828037115839186.jpg?param=140y140)" class="person-pic am-circle" width="100" height="100"></div>
+                    </a>
+                    <div class="body">
+                        <h2 class="name">
+                            <a href="{{member.site}}" target="_blank">{{member.name}}</a>
+                            <span class="am-badge am-badge-danger">Ph.D</span>
+                        </h2>
+                        <div class="summary"><i class="am-icon-university"></i> {{member.location}}</div>
+                        <div class="item">
+                            <i class="am-icon-envelope"></i> {{member.email}}
+                        </div>
+                        <!-- {% if member.area %}
+                        <h6 class="fellow">Research Area </h6>
+                        <div class="item">
+                            {{member.area}}
+                        </div>
+                        {% endif %} -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="intro">
+        <h4 class="sub-title">Administrative Staff</h4>
+        <div class="am-g">
+            <div class="am-u-md-6 am-u-sm-12">
+                <div class="detail-item">
+                    <a class="left">
+                        <img width="100" height="100" class="am-circle" src="{{url_for('static', filename='image/members/hongyun.jpg')}}">
+                    </a>
+                    <div class="body">
+                        <h2 class="name">
+                            <span>Hongyun Yan</span>
+                            <span class="am-badge am-badge-secondary">M.A</span>
+                        </h2>
+                        <div class="item">
+                            <i class="am-icon-envelope"></i> hongyun.yan@nju.edu.cn
+                        </div>
+                        <div class="item">
+                            <i class="am-icon-phone"></i> (86)-025-83596968
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,6 +3,38 @@ from datetime import datetime
 from . import db
 # from flask import current_app, request
 
+class Members(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    location = db.Column(db.String)
+    site = db.Column(db.String,default='qoqi.nju.edu.cn')
+    email = db.Column(db.String)
+    degree = db.Column(db.String)
+    category = db.Column(db.String)
+
+    @staticmethod
+    def generate_fake_members(count = 30):
+        from sqlalchemy.exc import IntegrityError
+        from random import seed
+        import forgery_py
+
+        seed()
+        for i in range(count):
+            m = Members(
+                email=forgery_py.internet.email_address(),
+                name=forgery_py.name.full_name(),
+                location=forgery_py.address.street_name(),
+                site='qoqi.nju.edu.cn',
+                degree='Ph.D',
+                category='phd'
+            )
+            db.session.add(m)
+            try:
+                db.session.commit()
+            except IntegrityError:
+                db.session.rollback()
+
+
 class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))

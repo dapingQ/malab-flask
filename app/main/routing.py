@@ -3,10 +3,10 @@
 from flask import render_template, session, redirect, url_for, flash, request
 
 from . import main
-from .forms import LoginForm, NewsForm
+from .forms import LoginForm, NewsForm, MembersForm
 from .. import config, db
 
-from ..models import News
+from ..models import News, Members
 
 @main.route('/',methods=['GET'])
 def index():
@@ -17,6 +17,11 @@ def index():
 def news():
     news_list = News.query.all()
     return render_template('news.html', news_list = news_list)
+
+@main.route('/members', methods=['GET'])
+def members():
+    members_list = Members.query.all()
+    return render_template('members.html', members_list = members_list)
 
 @main.route('/login',methods=['GET','POST'])
 def login():
@@ -61,4 +66,20 @@ def add_news():
 
 @main.route('/admin/members',methods=['GET'])
 def show_members():
-    return render_template('admin/admin-members.html')
+    form = MembersForm()
+    return render_template('admin/admin-members.html', form = form)
+
+@main.route('/admin/members/add',methods=['GET', 'POST'])
+def add_members():
+    form = MembersForm()
+    post = Members(
+        name=form.name.data,
+        email=form.email.data,
+        location=form.location.data,
+        degree=form.degree.data,
+        site=form.site.data,
+        category=form.category.data
+    )
+    db.session.add(post)
+    db.session.commit()
+    return redirect(url_for('main.show_members'))

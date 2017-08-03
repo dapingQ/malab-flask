@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, DateField, TextAreaField
+from wtforms import StringField, SubmitField, PasswordField, DateField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Length, Email
 
 class LoginForm(FlaskForm):
@@ -8,11 +8,14 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(message='Please confirm your password.')])
     submit = SubmitField('Log in')
 
-class Members(FlaskForm):
-    name_zh = StringField('Chinese Name', validators=[DataRequired(message='Invalid Name.')])
-    name_zh = StringField('English Name', validators=[DataRequired(message='Invalid Name.')])
-    university = StringField('University', validators=[DataRequired()])
-    mail = StringField('E-mail', validators=[DataRequired(), Email()])
+class MembersForm(FlaskForm):
+    name = StringField('English Name', validators=[DataRequired(message='Invalid Name.')])
+    location = StringField('University', validators=[DataRequired()])
+    site = StringField('Website')
+    email = StringField('E-mail', validators=[DataRequired(), Email()])
+    degree = SelectField('Degree', choices=[('B.SC','B.SC'), ('M.SC','M.SC'), ('Ph.D','Ph.D')])
+    category = SelectField('Category', choices=[('under','Undergraduate Students'), ('master','Master Students'), ('phd','Ph.D Candidates')])
+    submit = SubmitField('Submit')
 
 class NewsForm(FlaskForm):
     title = StringField('Title')
