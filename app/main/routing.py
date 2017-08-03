@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*- 
 
-from flask import render_template, session, redirect, url_for, flash
+from flask import render_template, session, redirect, url_for, flash, request
 
 from . import main
 from .forms import LoginForm
 from .db import News
-from .. import config
+from .. import config, db
 
 @main.route('/',methods=['GET'])
 def show_entries():
@@ -48,4 +48,4 @@ def show_news():
 def add_news():
     db.session.add(News(title=request.form['news-title'], author=request.form['news-author'], text=request.form['news-context'])) 
     db.session.commit()
-    return redirect(url_for('show_news'))
+    return redirect(url_for('main.show_news'))
