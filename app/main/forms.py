@@ -20,3 +20,4 @@ class NewsForm(FlaskForm):
     date = DateField()
     context = TextAreaField()
     submit = SubmitField('Submit')
+    
