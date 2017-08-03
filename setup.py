@@ -5,6 +5,7 @@ setup(
     packages=['app'],
     include_package_data=True,
     install_requires=[
+        'datetime',
         'flask',
         'flask-wtf',
         'flask-sqlalchemy',

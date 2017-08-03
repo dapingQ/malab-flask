@@ -1,24 +1,22 @@
 # -*- coding: utf-8 -*- 
-
+# from datetime import datetime
 from flask import render_template, session, redirect, url_for, flash, request
 
 from . import main
-<<<<<<< HEAD
-from .forms import LoginForm
-from .db import News
-from .. import config, db
-=======
 from .forms import LoginForm, NewsForm
 from .. import config, db
 
 from ..models import News
->>>>>>> test
 
 @main.route('/',methods=['GET'])
-def show_entries():
+def index():
     news_list = News.query.all()
     return render_template('index.html', news_list = news_list)
 
+@main.route('/news', methods=['GET'])
+def news():
+    news_list = News.query.all()
+    return render_template('news.html', news_list = news_list)
 
 @main.route('/login',methods=['GET','POST'])
 def login():
@@ -49,20 +47,18 @@ def dashboard():
 def show_news():
     news_list = News.query.all()
     form = NewsForm()
-    # if request.method == 'POST' and form.validate_on_submit():
-    #     post = News(title=form.title.data, author=form.author.data, 
-    #         date=form.data.data, context=form.context.data)
-    #     db.ssession.add(post)
-    #     return  redirect(url_for('main.show_news'))
     return render_template('admin/admin-news.html', news_list=news_list, form = form)
 
 
 @main.route('/admin/news/add',methods=['GET', 'POST'])
 def add_news():
     form = NewsForm()
-    if form.validate_on_submit():
-        post = News(title=form.title.data, author=form.author.data, 
-            date=form.data.data, context=form.context.data)
-        db.ssession.add(post)
-        db.session.commit()
+    post = News(title=form.title.data, author=form.author.data, date=form.date.data, context=form.context.data)
+    db.session.add(post)
+    db.session.commit()
     return redirect(url_for('main.show_news'))
+
+
+@main.route('/admin/members',methods=['GET'])
+def show_members():
+    return render_template('admin/admin-members.html')

@@ -1,45 +1,45 @@
-{% extends "layout.html" %}
-
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 <div class="am-slider am-slider-default" data-am-flexslider id="homePageSlider">
-  <ul class="slider-style am-slides">
+    <ul class="slider-style am-slides">
 
-  <li>
-		<div>
-			<a href="" target="_blank"><img src="{{url_for('static', filename='image/slide/f1.jpg')}}" /></a>
-		</div>
-	</li>
+        <li>
+            <div>
+                <a href="" target="_blank"><img src="{{url_for('static', filename='image/slide/f1.jpg')}}" /></a>
+            </div>
+        </li>
 
-  </ul>
+    </ul>
 </div>
 <div class="container am-g">
-<div class="am-u-md-9"> 
-  <div class="intro">
-   <h4 class="sub-title">Introduction</h4>
-   <p>Welcome to the website of MaLab in the School of Physics at Nanjing University! Our group focuses on the experimental quantum information processing and fundamental aspects of quantum physics via advanced quantum photonic techniques. </p>
+    <div class="am-u-md-9">
+        <div class="intro">
+            <h4 class="sub-title">Introduction</h4>
+            <p>Welcome to the website of MaLab in the School of Physics at Nanjing University! Our group focuses on the experimental quantum information processing and fundamental aspects of quantum physics via advanced quantum photonic techniques. </p>
 
-   <p>Many groundbreaking experiments in the foundations of quantum physics have been realized with photonic systems. These experiments triggered a completely new field—quantum technology—which has and will continue to make the big impact on society. Quantum technology harnesses the ‘spooky’ phenomena of quantum physics such as superposition, randomness and entanglement to process information in a novel way. Quantum photonics provides a promising path for both delivering quantum-enhanced technologies and exploring fundamental physics. The spectrum of our research covers experimental quantum communication, simulation and the foundations of quantum physics.</p>
- </div>
- <div class="intro">
-   <h4 class="sub-title">Opening</h4>
-   <p>Our group has been established in September 2015 and we are looking for motivated students, postdocs and researchers to join us.  Please feel 
-free to contact <a href="">me</a> if you are interested in our work.</p>
- </div>
+            <p>Many groundbreaking experiments in the foundations of quantum physics have been realized with photonic systems. These experiments triggered a completely new field—quantum technology—which has and will continue to make the big impact on society.
+                Quantum technology harnesses the ‘spooky’ phenomena of quantum physics such as superposition, randomness and entanglement to process information in a novel way. Quantum photonics provides a promising path for both delivering quantum-enhanced
+                technologies and exploring fundamental physics. The spectrum of our research covers experimental quantum communication, simulation and the foundations of quantum physics.</p>
+        </div>
+        <div class="intro">
+            <h4 class="sub-title">Opening</h4>
+            <p>Our group has been established in September 2015 and we are looking for motivated students, postdocs and researchers to join us. Please feel free to contact <a href="">me</a> if you are interested in our work.</p>
+        </div>
 
-</div>
- <div class="news am-u-md-3">
-   <h4 class="sub-title">news</h4>
-   {% for item in news_list %}
-   <a  href="" alt="" target="_blank">
-  　	<h3 class="news-title">{{ item.title }}</h3>
-   </a>
-   {% endfor %}
+    </div>
+    <div class="news am-u-md-3">
+        <h4 class="sub-title">news</h4>
+        {% for item in news_list %}
+        <a href="" alt="" target="_blank">
 
-   <h4 class="sub-title">events</h4>
-   <a  href="" alt="" target="_blank">
-     <h3 class="news-title">Cat: 1</h3>
-   </a>
- </div>
+            <h3 class="news-title">{{ item.title }}</h3>
+        </a>
+        {% endfor %}
+
+        <h4 class="sub-title">events</h4>
+        <a href="" alt="" target="_blank">
+            <h3 class="news-title">Cat: 1</h3>
+        </a>
+    </div>
 </div>
 
 {% endblock %}

@@ -1,65 +1,98 @@
 {% extends 'admin/admin-layout.html' %} {% block content %}
 <div class="am-g">
-    <div class="am-u-sm-12">
-        <table class="am-table am-table-bd am-table-striped admin-content-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Last Update</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for news in news_list %}
-                <tr>
-                    <td>{{ news.id }}</td>
-                    <td>{{ news.author }}</td>
-                    <td><a href="#">{{ news.title }}</a></td>
-                    <td>{{ news.date }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf">
+            <strong class="am-text-success am-text-lg">News&Events</strong> /
+            <!-- <small>form</small> -->
+        </div>
     </div>
-    <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+    <hr>
+    <div class="am-tabs am-margin" data-am-tabs>
+        <ul class="am-tabs-nav am-nav am-nav-tabs">
+            <li class="am-active"><a href="#news">News</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#new_post">New Post</a></li>
+        </ul>
+        <div class="am-tabs-bd" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <div class="am-tab-panel am-fade am-active am-in" id="news">
+                <div class="am-u-sm-12">
+                    <table class="am-table am-table-bd am-table-striped admin-content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Last Update</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for news in news_list %}
+                            <tr>
+                                <td>{{ news.id }}</td>
+                                <td>{{ news.author }}</td>
+                                <td><a href="#">{{ news.title }}</a></td>
+                                <td>{{ news.date }}</td>
+                                <td>
+                                    <div class="am-btn-toolbar">
+                                        <div class="am-btn-group am-btn-group-xs">
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="am-tab-panel am-fade" id="events">
 
-    <div class="am-u-sm-8">
-        <form class="am-form am-form-horizontal" method=post action="{{ url_for('main.add_news') }}">
-            <div class="am-form-group">
-                <label class="am-u-sm-3 am-form-label">Title</label>
+            </div>
+            <div class="am-tab-panel am-fade" id="new_post">
                 <div class="am-u-sm-9">
-                    {{ form.title() }}
-                </div>
-            </div>
+                    <form class="am-form am-form-horizontal" method=post action="{{ url_for('main.add_news') }}">
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">Title</label>
+                            <div class="am-u-sm-9">
+                                {{ form.title() }}
+                            </div>
+                        </div>
 
-            <div class="am-form-group">
-                <label class="am-u-sm-3 am-form-label">Author</label>
-                <div class="am-u-sm-9">
-                    {{ form.author() }}
-                </div>
-            </div>
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">Author</label>
+                            <div class="am-u-sm-9">
+                                {{ form.author() }}
+                            </div>
+                        </div>
 
-            <div class="am-form-group">
-                <label class="am-u-sm-3 am-form-label am-datepicker-date">Date</label>
-                <div class="am-u-sm-9">
-                    {{ form.date() }}
-                </div>
-            </div>
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">Date</label>
+                            <div class="am-u-sm-9 am-datepicker-date am-inout-group" data-am-datepicker=" {format: 'yyyy-mm-dd'} ">
+                                {{ form.date(class="am-input-group-btn am-datepicker-add-on") }}
+                            </div>
+                        </div>
 
-            <div class="am-form-group">
-                <label class="am-u-sm-3 am-form-label">Context</label>
-                <div class="am-u-sm-9">
-                    {{ form.context() }}
-                </div>
-            </div>
+                        <div class="am-form-group ">
+                            <label class="am-u-sm-3 am-form-label ">Context</label>
+                            <div class="am-u-sm-9 ">
+                                {{ form.context(row="10") }}
+                            </div>
+                        </div>
 
-            <div class="am-form-group">
-                <div class="am-u-sm-9 am-u-sm-push-3">
-                    {{ form.submit() }}<button type="submit" class="am-btn am-btn-primary"></button>
+                        <div class="am-form-group ">
+                            <div class="am-u-sm-9 am-u-sm-push-3 ">
+                                {{ form.submit( class="am-btn am-btn-primary am-btn-sm am-fl ") }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="am-u-sm-3">
+                    <user-select></user-select>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 {% endblock %}
