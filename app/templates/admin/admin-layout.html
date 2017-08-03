@@ -4,36 +4,35 @@
 {% include 'head.html' %}
 
 <body>
-<!--[if lte IE 9]>
+    <!--[if lte IE 9]>
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
   以获得更好的体验！</p>
 <![endif]-->
 
-<header class="am-topbar am-topbar-inverse admin-header">
-  <div class="am-topbar-brand">
-    <strong> 控制面板 / Dashboard </small>
-  </div>
-</header>
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+            <strong> Dashboard </strong>
+        </div>
+    </header>
 
-<div class="am-cf admin-main">
-  
-  {% include 'admin/admin-sidebar.html' %}
+    <div class="am-cf admin-main">
 
-  <!-- content start -->
-  <div class="admin-content">
-    <div class="admin-content-body">
-        
-  {% block content %}
-    
-  {% endblock %}
-      
+        {% include 'admin/admin-sidebar.html' %}
+
+        <!-- content start -->
+        <div class="admin-content">
+            <div class="admin-content-body">
+
+                {% block content %} {% endblock %}
+
+            </div>
+        </div>
+        <!-- content end -->
+
     </div>
-  </div>
-  <!-- content end -->
 
-</div>
-
-{% include 'scripts.html' %}
+    {% include 'scripts.html' %}
 
 </body>
+
 </html>

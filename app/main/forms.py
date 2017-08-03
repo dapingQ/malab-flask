@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, DateField
+from wtforms import StringField, SubmitField, PasswordField, DateField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email
 
 class LoginForm(FlaskForm):
@@ -14,6 +14,9 @@ class Members(FlaskForm):
     university = StringField('University', validators=[DataRequired()])
     mail = StringField('E-mail', validators=[DataRequired(), Email()])
 
-class News(FlaskForm):
-    title = StringField()
+class NewsForm(FlaskForm):
+    title = StringField('Title')
+    author = StringField('Author')
     date = DateField()
+    context = TextAreaField()
+    submit = SubmitField('Submit')

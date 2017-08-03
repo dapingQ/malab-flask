@@ -3,9 +3,16 @@
 from flask import render_template, session, redirect, url_for, flash, request
 
 from . import main
+<<<<<<< HEAD
 from .forms import LoginForm
 from .db import News
 from .. import config, db
+=======
+from .forms import LoginForm, NewsForm
+from .. import config, db
+
+from ..models import News
+>>>>>>> test
 
 @main.route('/',methods=['GET'])
 def show_entries():
@@ -41,11 +48,21 @@ def dashboard():
 @main.route('/admin/news',methods=['GET'])
 def show_news():
     news_list = News.query.all()
-    return render_template('admin/admin-news.html', news_list=news_list)
+    form = NewsForm()
+    # if request.method == 'POST' and form.validate_on_submit():
+    #     post = News(title=form.title.data, author=form.author.data, 
+    #         date=form.data.data, context=form.context.data)
+    #     db.ssession.add(post)
+    #     return  redirect(url_for('main.show_news'))
+    return render_template('admin/admin-news.html', news_list=news_list, form = form)
 
 
 @main.route('/admin/news/add',methods=['GET', 'POST'])
 def add_news():
-    db.session.add(News(title=request.form['news-title'], author=request.form['news-author'], text=request.form['news-context'])) 
-    db.session.commit()
+    form = NewsForm()
+    if form.validate_on_submit():
+        post = News(title=form.title.data, author=form.author.data, 
+            date=form.data.data, context=form.context.data)
+        db.ssession.add(post)
+        db.session.commit()
     return redirect(url_for('main.show_news'))

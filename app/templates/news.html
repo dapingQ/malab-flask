@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block content %}
+<div class="news-body">
+    <table class="am-table am-table-bd am-table-striped admin-content-table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>News & Events</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for news in paginator.posts %}
+            <tr>
+                <td>
+
+                </td>
+                <td> <a href="{{BASE_PATH}}{{ post.url }}" class="newstitle">{{ post.title }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <ul data-am-widget="pagination" class="am-pagination-centered  am-pagination am-pagination-default">
+        {% if paginator.previous_page %}
+        <li class="am-pagination-prev ">
+            <a href="{{BASE_PATH}}{{ paginator.previous_page_path }}" class="">Previous</a>
+        </li>
+        {% else %}
+        <li class="am-pagination-prev ">
+            <a>Previous</a>
+        </li>
+        {% endif %} {% if paginator.page == 1 %}
+        <li><a>1</a></li>
+        {% else %}
+        <li><a href="{{BASE_PATH}}/news/index.html" class="">1</a></li>
+        {% endif %} {% for count in (2..paginator.total_pages) %}
+        <li class="">
+            <a href="{{BASE_PATH}}/news/page{{ count }}" class="">{{ count }}</a>
+        </li>
+
+        {% endfor %} {% if paginator.next_page %}
+        <li class="am-pagination-next ">
+            <a href="{{BASE_PATH}}{{ paginator.next_page_path }}" class="">Next</a>
+        </li>
+        {% else %}
+        <li class="am-pagination-next ">
+            <a>Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+
+
+
+{% endblcok %}

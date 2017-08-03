@@ -1,52 +1,65 @@
-{% extends 'admin/admin-layout.html' %}
-{% block content %}
-      <div class="am-g">
-        <div class="am-u-sm-12">
-          <table class="am-table am-table-bd am-table-striped admin-content-table">
+{% extends 'admin/admin-layout.html' %} {% block content %}
+<div class="am-g">
+    <div class="am-u-sm-12">
+        <table class="am-table am-table-bd am-table-striped admin-content-table">
             <thead>
-            <tr>
-              <th>ID</th><th>用户名</th><th>最后成交任务</th>
-            </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Last Update</th>
+                </tr>
             </thead>
             <tbody>
-            {% for news in news_list %}
-            <tr><td>{{ news.id }}</td><td>{{ news.author }}</td><td><a href="#">{{ news.title }}</a></td> 
-            </tr>
-            {% endfor %}
+                {% for news in news_list %}
+                <tr>
+                    <td>{{ news.id }}</td>
+                    <td>{{ news.author }}</td>
+                    <td><a href="#">{{ news.title }}</a></td>
+                    <td>{{ news.date }}</td>
+                </tr>
+                {% endfor %}
             </tbody>
-          </table>
-          <div class="am-u-sm-12">
-            <form class="am-form am-form-horizontal" method=post action="{{ url_for('add_news') }}">
+        </table>
+    </div>
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+
+    <div class="am-u-sm-8">
+        <form class="am-form am-form-horizontal" method=post action="{{ url_for('main.add_news') }}">
             <div class="am-form-group">
-              <label class="am-u-sm-3 am-form-label">Title / 标题</label>
-              <div class="am-u-sm-9">
-                <input type="text" name=news-title placeholder="姓名 / Name">
-                <small>输入你的名字，让我们记住你。</small>
-              </div>
+                <label class="am-u-sm-3 am-form-label">Title</label>
+                <div class="am-u-sm-9">
+                    {{ form.title() }}
+                </div>
             </div>
 
             <div class="am-form-group">
-              <label class="am-u-sm-3 am-form-label">作者 / Author</label>
-              <div class="am-u-sm-9">
-                <input type="text" name=news-author >
-              </div>
+                <label class="am-u-sm-3 am-form-label">Author</label>
+                <div class="am-u-sm-9">
+                    {{ form.author() }}
+                </div>
             </div>
 
             <div class="am-form-group">
-              <label class="am-u-sm-3 am-form-label">简介 / Intro</label>
-              <div class="am-u-sm-9">
-                <textarea class="" rows="5" name=news-context></textarea>
-                <!-- <small>250字以内写出你的一生...</small> -->
-              </div>
+                <label class="am-u-sm-3 am-form-label am-datepicker-date">Date</label>
+                <div class="am-u-sm-9">
+                    {{ form.date() }}
+                </div>
             </div>
 
             <div class="am-form-group">
-              <div class="am-u-sm-9 am-u-sm-push-3">
-                <button type="submit" class="am-btn am-btn-primary">保存修改</button>
-              </div>
+                <label class="am-u-sm-3 am-form-label">Context</label>
+                <div class="am-u-sm-9">
+                    {{ form.context() }}
+                </div>
             </div>
-          </form>
-          </div>
-        </div>
-      </div>
+
+            <div class="am-form-group">
+                <div class="am-u-sm-9 am-u-sm-push-3">
+                    {{ form.submit() }}<button type="submit" class="am-btn am-btn-primary"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
