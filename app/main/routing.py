@@ -43,6 +43,11 @@ def dashboard():
 def show_news():
     news_list = News.query.all()
     form = NewsForm()
+    # if request.method == 'POST' and form.validate_on_submit():
+    #     post = News(title=form.title.data, author=form.author.data, 
+    #         date=form.data.data, context=form.context.data)
+    #     db.ssession.add(post)
+    #     return  redirect(url_for('main.show_news'))
     return render_template('admin/admin-news.html', news_list=news_list, form = form)
 
 

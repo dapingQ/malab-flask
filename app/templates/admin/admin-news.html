@@ -21,43 +21,45 @@
                 {% endfor %}
             </tbody>
         </table>
-        <div class="am-u-sm-12">
-            <form class="am-form am-form-horizontal" method=post action="{{ url_for('main.add_news') }}">
-                <div class="am-form-group">
-                    <label class="am-u-sm-3 am-form-label">Title</label>
-                    <div class="am-u-sm-9">
-                        {{ form.title() }}
-                    </div>
-                </div>
+    </div>
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 
-                <div class="am-form-group">
-                    <label class="am-u-sm-3 am-form-label">Author</label>
-                    <div class="am-u-sm-9">
-                        {{ form.author() }}
-                    </div>
+    <div class="am-u-sm-8">
+        <form class="am-form am-form-horizontal" method=post action="{{ url_for('main.add_news') }}">
+            <div class="am-form-group">
+                <label class="am-u-sm-3 am-form-label">Title</label>
+                <div class="am-u-sm-9">
+                    {{ form.title() }}
                 </div>
+            </div>
 
-                <div class="am-form-group">
-                    <label class="am-u-sm-3 am-form-label am-datepicker-date">Date</label>
-                    <div class="am-u-sm-9">
-                        {{ form.date() }}
-                    </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-3 am-form-label">Author</label>
+                <div class="am-u-sm-9">
+                    {{ form.author() }}
                 </div>
+            </div>
 
-                <div class="am-form-group">
-                    <label class="am-u-sm-3 am-form-label">Context</label>
-                    <div class="am-u-sm-9">
-                        {{ form.context() }}
-                    </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-3 am-form-label am-datepicker-date">Date</label>
+                <div class="am-u-sm-9">
+                    {{ form.date() }}
                 </div>
+            </div>
 
-                <div class="am-form-group">
-                    <div class="am-u-sm-9 am-u-sm-push-3">
-                        <button type="submit" class="am-btn am-btn-primary">{{ form.submit.label }}</button>
-                    </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-3 am-form-label">Context</label>
+                <div class="am-u-sm-9">
+                    {{ form.context() }}
                 </div>
-            </form>
-        </div>
+            </div>
+
+            <div class="am-form-group">
+                <div class="am-u-sm-9 am-u-sm-push-3">
+                    {{ form.submit() }}<button type="submit" class="am-btn am-btn-primary"></button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
