@@ -48,10 +48,14 @@ def dashboard():
     return render_template('admin/dashboard.html')
 
 
-@main.route('/admin/news',methods=['GET'])
+@main.route('/admin/news',methods=['GET', 'POST'])
 def show_news():
-    news_list = News.query.all()
     form = NewsForm()
+    if form.validate_on_submit():
+        post = News(title=form.title.data, author=form.author.data, date=form.date.data, context=form.context.data)
+        db.session.add(post)
+        db.session.commit()
+    news_list = News.query.order_by(News.date.desc()).all()
     return render_template('admin/admin-news.html', news_list=news_list, form = form)
 
 
@@ -62,7 +66,6 @@ def add_news():
     db.session.add(post)
     db.session.commit()
     return redirect(url_for('main.show_news'))
-
 
 @main.route('/admin/members',methods=['GET'])
 def show_members():

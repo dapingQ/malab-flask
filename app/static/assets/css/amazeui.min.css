@@ -11294,7 +11294,7 @@ tbody.am-collapse.am-in {
 .am-datepicker-next-icon:hover,
 .am-datepicker-prev-icon:hover,
 .am-datepicker-select:hover {
-    color: #0c80ba;
+    color: #5eb95e;
     background: rgba(154, 217, 248, .5)
 }
 
@@ -11304,7 +11304,7 @@ tbody.am-collapse.am-in {
 
 .am-datepicker .am-datepicker-dow {
     height: 40px;
-    color: #0c80ba
+    color: #5eb95e
 }
 
 .am-datepicker-caret {
