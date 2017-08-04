@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}{% block content %}
+<div class="news-body">
+    <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: 0;min-height:50px}" data-am-sticky="{top:0}">
+        <ul class="am-hide-sm">
+            <li><a href="#research_1">Quantum Information Processing (QIP)</a></li>
+            <li><a href="#research_2">The Foundations of Quantum Physics</a></li>
+        </ul>
+        <ul class="am-show-sm-only">
+            <li><a href="#research_1">First</a></li>
+            <li><a href="#research_2">Second</a></li>
+        </ul>
+    </nav>
+
+    <div id="research_1">
+        <h6 class="sub-title">Quantum information processing (QIP)</h6>
+        <div class="am-g research-body">
+            <div class="am-u-sm-11 am-u-sm-centered">
+                <div class="am-cf am-article">
+                    <p>
+                        QIP is a new way to process information based on quantum physics. It harnesses the intriguing traits of quantum physics, including superposition, entanglement and etc., to enhance the communication security and computation power in an unprecedented way.
+                        QIP research includes areas like quantum communication, computation and metrology. Our research focus includes the following areas:
+                    </p>
+                    <h3>a. Quantum communication.</h3>
+                    <div class="am-align-right">
+                        <img src="{{ url_for('static', filename='image/research/telepartation.jpg') }}" alt="" width="240">
+                    </div>
+                    <p>
+                        In principle, quantum physics guarantees absolute secure communication due to the uncertainty principle, which has been employed in quantum cryptography. On top of that, novel communication protocols have been made possible in the quantum realm, such
+                        as quantum teleportation, entanglement swapping and so on.
+                    </p>
+
+                    <p>
+                        Please see the following references as examples of our research:
+                    </p>
+                    <blockquote>
+                        X. Ma, T. Herbst, T.Scheidl, D. Wang, S. Kropatschek,W. Naylor, B.Wittmann A. Mech, J. Kofler, E. Anisimova, V. Makarov, T. Jennewein, R. Ursin, & A. Zeilinger.Quantum teleportation over 143 km using active feed-forward between two Canary Islands Nature
+                        489, 269-273 (2012).
+                    </blockquote>
+
+                    <h3>b. Quantum simulation and computation.</h3>
+                    <div class="am-align-left">
+                        <img src="{{ url_for('static', filename='image/research/computation.jpg') }}" alt="" width="240">
+                    </div>
+                    <p>The behavior of relatively small quantum systems cannot be calculated because quantum states contain much more information than their classical counterparts. However, if another quantum system is used to simulate the quantum system
+                        of interest, then answers about the properties of the complex quantum system can be obtained. We use multipartite entangled photons to carry out quantum simulation and computation tasks.
+                    </p>
+                    <p>
+                        Please see the following references as examples of our research:
+                    </p>
+                    <blockquote>
+                        X. Ma, B. Dakic, S. Kropatschek,W. Naylor, Y. Chan, Z. Gong, L. Duan, A. Zeilinger & P. Walther.Towards photonic quantum simulation of ground states of frustrated Heisenberg spin systems Scientific Reports, 4, 3583, (2014).
+                    </blockquote>
+
+                    <blockquote>
+                        X. Ma*, B. Dakic*, W. Naylor, A. Zeilinger & P.Walther. Quantum simulation of the wavefunction to probe frustrated Heisenberg spin systems. Nature Physics 7, 399-405 (2011)
+                    </blockquote>
+
+                    <h3>c. Integrated quantum photonic processor.</h3>
+                    <div class="am-align-left">
+                        <img src="{{ url_for('static', filename='image/research/photonic.jpg')}}" alt="" width="240">
+                    </div>
+                    <p>Photonic quantum information science provides a promising path for employing complex quantum photonic systems for both delivering quantum-enhanced technologies and exploring fundamental physics. While there have been impressive proof-of-principle
+                        demonstrations based upon on bulk optical elements, future technologies will require integrated optics architecture for improved performance, miniaturization and scalability. The use of a single quantum photonic chip containing
+                        all stages of optical qubit creation, manipulation, and detection will surpass bulk quantum optics.
+                    </p>
+                    <p>
+                        Please see the following references as examples of our research:
+                    </p>
+                    <blockquote>
+                        X. Ma, X. Guo, C. Schuck, K. Fong, L. Jiang, & H. Tang. On-chip interaction-free measurements via the quantum Zeno effect Phys. Rev. A, 90, 042109, (2014).
+                    </blockquote>
+
+                    <blockquote>
+                        C. Schuck,W. Pernice, X. Ma, H. Tang. Optical time domain reflectometry with low noise waveguide superconducting nanowire single photon detectors. Applied Physics Letters 102, 191104 (2013).
+                    </blockquote>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="research_2">
+        <h6 class="sub-title">The foundations of quantum physics</h6>
+        <div class="am-g research-body">
+            <div class="am-u-sm-11 am-u-sm-centered">
+                <div class="am-cf am-article">
+                    <div class="am-align-right">
+                        <img src="{{ url_for('static', filename='image/research/delayed.jpg')}}" alt="" width="240">
+                    </div>
+                    <p>
+                        In recent years, with the rapid development of experimental techniques for fast and sensitive measurements of light, it has become possible to carry out many of the thought experiments whose interpretations were widely debated in the course of the development
+                        of quantum physics. In our group, we are interested in non-local aspects of multipartite entangled states, and delayed-choice experiments.
+                    </p>
+                    <p>
+                        Please see the following references as examples of our research:
+                    </p>
+
+                    <blockquote>
+                        X. Ma, J. Kofler, & A. Zeilinger. Delayed-choice gedanken experiments and their realizations Electronic print: <a href="http://arxiv.org/abs/1407.2930" target="_blank">http://arxiv.org/abs/1407.2930</a>
+                    </blockquote>
+
+                    <blockquote>
+                        X. Ma, S. Zotter, J. Kofler, R. Ursin, Č . Brukner, T. Jennewein, & A. Zeilinger. Experimental delayed choice entanglement swapping. Nature Physics 8, 480-485 (2012)
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

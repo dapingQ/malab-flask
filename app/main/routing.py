@@ -18,6 +18,11 @@ def news():
     news_list = News.query.all()
     return render_template('news.html', news_list = news_list)
 
+@main.route('/news/<int:id>')
+def single_news(id):
+    news = News.query.get_or_404(id)
+    return render_template('post.html', news = news )
+
 @main.route('/members', methods=['GET'])
 def members():
     members_list = Members.query.all()
@@ -42,9 +47,6 @@ def logout():
 
 @main.route('/admin')
 def dashboard():
-    # db = get_db()
-    # cur = db.execute('select id, author, title from news order by id asc')
-    # news_list = cur.fetchall()
     return render_template('admin/dashboard.html')
 
 

@@ -13,8 +13,13 @@ class MembersForm(FlaskForm):
     location = StringField('University', validators=[DataRequired()])
     site = StringField('Website')
     email = StringField('E-mail', validators=[DataRequired(), Email()])
-    degree = SelectField('Degree', choices=[('B.SC','B.SC'), ('M.SC','M.SC'), ('Ph.D','Ph.D')])
-    category = SelectField('Category', choices=[('under','Undergraduate Students'), ('master','Master Students'), ('phd','Ph.D Candidates')])
+    degree = SelectField('Degree', choices=[('B.S','B.S'), ('M.S','M.S'), ('Ph.D','Ph.D')])
+    category = SelectField('Category', choices=[
+        ('under','Undergraduate Students'), 
+        ('master','Master Students'), 
+        ('phd','Ph.D Candidates'),
+        ('post','Post Doctors'),
+        ('alumni','Alumni')])
     submit = SubmitField('Submit')
 
 class NewsForm(FlaskForm):

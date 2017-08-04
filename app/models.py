@@ -15,7 +15,7 @@ class Members(db.Model):
     @staticmethod
     def generate_fake_members(count = 30):
         from sqlalchemy.exc import IntegrityError
-        from random import seed
+        from random import seed, choice
         import forgery_py
 
         seed()
@@ -25,8 +25,8 @@ class Members(db.Model):
                 name=forgery_py.name.full_name(),
                 location=forgery_py.address.street_name(),
                 site='qoqi.nju.edu.cn',
-                degree='Ph.D',
-                category='phd'
+                degree=choice(['Ph.D','M.S','B.S']),
+                category=choice(['under','master','phd','post'])
             )
             db.session.add(m)
             try:
