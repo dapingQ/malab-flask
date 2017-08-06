@@ -3,6 +3,18 @@ from datetime import datetime
 from . import db
 # from flask import current_app, request
 
+class Papers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
+    publisher = db.Column(db.String)
+    author = db.Column(db.String) 
+    tag = db.Column(db.String)
+    year = db.Column(db.String)
+    url = db.Column(db.String)
+    arxiv = db.Column(db.String)
+
+
+
 class Members(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -11,6 +23,9 @@ class Members(db.Model):
     email = db.Column(db.String)
     degree = db.Column(db.String)
     category = db.Column(db.String)
+
+    def __repr__(self):
+        return '<Members %r>' % self.name
 
     @staticmethod
     def generate_fake_members(count = 30):
