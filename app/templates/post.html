@@ -6,10 +6,9 @@
         </h1>
         <p class="post-time">post on {{ news.date }}, by {{news.author}} </p>
 
-        <div id="menu"></div>
         <div id="main" class="span9">
             <div class="post">
-                {{ news.context }}
+                {{ news.context | safe }}
             </div>
         </div>
     </article>

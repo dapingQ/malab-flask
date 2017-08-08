@@ -2,7 +2,7 @@
 <div class="am-g">
     <div class="am-cf am-padding am-padding-bottom-0">
         <div class="am-fl am-cf">
-            <strong class="am-text-success am-text-lg">News&Events</strong> /
+            <strong class="am-text-success am-text-lg">News&Events</strong>
             <!-- <small>form</small> -->
         </div>
     </div>
@@ -29,13 +29,17 @@
                             {% for news in news_list %}
                             <tr>
                                 <td>{{ news.date }}</td>
-                                <td><a href="#">{{ news.title }}</a></td>
+                                <td><a href="../news/{{news.id}}">{{ news.title }}</a></td>
                                 <td>{{ news.author }}</td>
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                            <a href="{{url_for('main.edit_news', id = news.id)}}">
+                                                <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> EDIT</button>
+                                            </a>
+                                            <a href="{{url_for('main.delete_news', id = news.id)}}">
+                                                <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> DELETE</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
@@ -50,7 +54,7 @@
             </div>
             <div class="am-tab-panel am-fade" id="new_post">
                 <div class="am-u-sm-9">
-                    <form class="am-form am-form-horizontal" method=post action="{{ url_for('main.show_news') }}">
+                    <form class="am-form am-form-horizontal" method=post action="{{ url_for('main.edit_news') }}">
                         <div class="am-form-group">
                             <label class="am-u-sm-3 am-form-label">Title</label>
                             <div class="am-u-sm-9">

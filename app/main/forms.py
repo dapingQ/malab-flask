@@ -8,6 +8,10 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(message='Please confirm your password.')])
     submit = SubmitField('Log in')
 
+class PaperForm(FlaskForm):
+    title = StringField('Title')
+    
+
 class MembersForm(FlaskForm):
     name = StringField('English Name', validators=[DataRequired(message='Invalid Name.')])
     location = StringField('University', validators=[DataRequired()])
