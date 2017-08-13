@@ -27,9 +27,9 @@ class MembersForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class NewsForm(FlaskForm):
-    title = StringField('Title')
-    author = StringField('Author')
-    date = DateField()
-    context = TextAreaField()
-    submit = SubmitField('Submit')
+    title = StringField('Title', validators=[DataRequired()])
+    author = StringField('Author', validators=[DataRequired()])
+    date = DateField('Date', validators=[DataRequired()])
+    context = TextAreaField('Context', validators=[DataRequired()])
+    submit = SubmitField('Submit', validators=[DataRequired()])
     

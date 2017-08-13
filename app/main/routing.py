@@ -68,9 +68,10 @@ def show_news():
 @main.route('/admin/news/add',methods=['GET', 'POST'])
 def add_news():
     form = NewsForm()
-    post = News(title=form.title.data, author=form.author.data, date=form.date.data, context=form.context.data)
-    db.session.add(post)
-    db.session.commit()
+    if form.is_submitted():
+        post = News(title=form.title.data, author=form.author.data, date=form.date.data, context=form.context.data)
+        db.session.add(post)
+        db.session.commit()
     return redirect(url_for('main.show_news'))
 
 @main.route('/admin/news/delete/<int:id>', methods=['GET', 'DELETE'])
@@ -81,23 +82,23 @@ def delete_news(id):
     # redirect(url_for('main.news'))
     return redirect(url_for('main.show_news'))
 
-@main.route('/admin/news/edit/<int:id>', methods=['GET', 'POST'])
+@main.route('/admin/news/edit/<int:id>', methods=['GET','POST'])
 def edit_news(id):
     news = News.query.get_or_404(id)
     form = NewsForm()
-    if form.validate_on_submit():
+    if form.is_submitted():
         post = News(title=form.title.data, 
             author=form.author.data, 
             date=form.date.data, 
-            context=form.context.data)        
+            context=form.context.data)
         db.session.add(post)
         db.session.commit()
-        # return redirect(url_for('main.show_news'))
+        return redirect(url_for('main.show_news'))
     form.title.data = news.title
     form.author.data = news.author
     form.date.data = news.date
     form.context.data = news.context
-    return redirect(url_for('main.show_news'))
+    return render_template('admin/admin-news-edit.html', id = id , form = form )
 
 @main.route('/admin/members',methods=['GET'])
 def show_members():
@@ -117,4 +118,4 @@ def add_members():
     )
     db.session.add(post)
     db.session.commit()
-    return redirect(url_for('main.show_members'))
+    return redirect(url_for('main.show_members'))   
